@@ -65,7 +65,7 @@ const Navbar = () => {
                                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span style={{ marginRight: "10px" }}> {configuracionData?.nombreusuario}</span> <span>
                                         <img
-                                            src="./images/user.jpg"
+                                            src="/user.jpg"
                                             alt="Usuario"
                                             className="rounded-circle img-fluid"
                                             style={{ width: "32px", height: "32px", objectFit: "cover" }}
