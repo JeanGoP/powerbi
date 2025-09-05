@@ -1,0 +1,58 @@
+
+/* Cada card */
+.custom-card {
+  cursor: pointer;
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+  border: 2px solid #dddfe1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1 1 250px; /* crece, encoge y mínimo 250px */
+}
+
+/* Hover */
+.custom-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-color: #0d6efd;
+}
+
+.card-icon {
+  font-size: 40px;
+  transition: transform 0.3s ease;
+}
+
+.custom-card:hover .card-icon {
+  transform: translateY(-5px);
+}
+
+/* Título más pequeño */
+.card-title {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  word-wrap: break-word;
+  white-space: normal;
+  min-height: 2.5rem; /* asegura consistencia entre cards */
+}
+
+
+/* Card deshabilitada */
+.disabled-card {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.card-description {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0;
+  word-wrap: break-word;
+  white-space: normal;
+  flex-grow: 1;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* máximo de 3 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
