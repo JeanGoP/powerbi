@@ -50,7 +50,7 @@ const Card = ({icono='', titulo='', descripcion='', urlPowerBI='www', colorIcono
       };
       const handleClick = () => {
         if (isValidUrl(urlPowerBI)) {
-          navigate("/reporte", { state: { url: urlPowerBI } });
+          navigate("/reporte", { state: { url: urlPowerBI, nombreReporte: titulo }});
         } else {
             toast.error("Este reporte no tiene una URL válida.");
         }

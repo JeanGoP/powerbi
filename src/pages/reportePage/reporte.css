@@ -1,8 +1,9 @@
-.reporte-container {
+ .reporte-container {
     position: relative;
     width: 100%;
     height: 80vh;
-  }
+    
+  } 
   
   .btn-volver {
     position: absolute;
@@ -55,7 +56,7 @@
   }
   
   /* Wrapper del iframe */
-.iframe-wrapper {
+ .iframe-wrapper {
   max-width: 90%;
   width: 100%;
   height: 600px;
@@ -63,7 +64,8 @@
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
+  position: relative;
+} 
 
 /* Iframe adaptado */
 .iframe-reporte {
@@ -89,5 +91,90 @@
   .reporte-container {
     height: 60vh;
   }
-  
+  .cover {
+    width: 12% !important; 
+  }
+  .Titulo__reporte{
+
+    font-size: large !important;
+    position: relative;
+    top:-25px
+  }
+}
+
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Cover siempre visible */
+.cover {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  height: 36px; /* altura para cubrir la barra */
+  background-color: #eaeaea;
+  z-index: 10;
+}
+ /* .iframe-wrapper {
+  transition: all 0.5s ease-in-out;
+  transform: scale(0.98);
+  opacity: 0.95;
+} */
+
+/* Cuando está en fullscreen */
+/* .iframe-wrapper.fullscreen-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}  */
+/* Botón expandir flotante */
+
+.btn-expand {
+  position: absolute;
+  bottom: 3px;
+  right: 10px;
+  background-color: #2b3035;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.btn-expand:hover {
+  transform: scale(1.1);
+  background-color: #0d6efd;
+}
+
+
+/* Estado expandido del iframe */
+.iframe-expanded {
+  width: 100% !important;
+  height: 90vh !important;
+}
+
+/* Contenedor expandido */
+.reporte-container.expanded {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.Titulo__reporte{
+  align-items: center;
+  text-align: center;
+  font-size: x-large;
+  font-weight: 700;
+  color: #2b3035;
 }
