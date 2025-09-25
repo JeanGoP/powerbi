@@ -15,7 +15,7 @@ export const LanguageProvider = ({ children }) => {
         opcion: '',
       };
       const response = await IniciarSesion(jsonLogin);
-      console.log(response);
+      //console.log(response);
       
       if (!response.Error) {
         setConfiguracionData(response.Resultado);

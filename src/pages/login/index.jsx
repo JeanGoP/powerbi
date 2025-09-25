@@ -12,8 +12,11 @@ export function Login() {
   const { setConfiguracionData } = useContext(LanguageContext);
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false); 
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    if (e) e.preventDefault(); 
+
     const newErrors = {};
     if (!usuario.trim()) newErrors.usuario = 'El nombre de usuario es obligatorio';
     if (!password.trim()) newErrors.password = 'La contraseña es obligatoria';
@@ -21,6 +24,7 @@ export function Login() {
 
     if (Object.keys(newErrors).length === 0) {
       try {
+        setLoading(true);
         const jsonLogin = {
           usuario: usuario,
           password: password,
@@ -42,6 +46,8 @@ export function Login() {
         console.log(error);
         console.error('Error al obtener Informacion:', error.message);
         toast.error('Error:No se encontro el servidor.');
+      } finally {
+        setLoading(false); 
       }
     }
   };
@@ -53,7 +59,8 @@ export function Login() {
           <h4 className="fw-bold">Inicio de Sesión</h4>
         </div>
 
-        <form>
+        {/* FORM con onSubmit */}
+        <form onSubmit={handleLogin}>
           <div className="mb-3">
             <label className="form-label" htmlFor="usuario">
               Usuario
@@ -65,6 +72,7 @@ export function Login() {
               placeholder="Nombre de usuario"
               value={usuario}
               onChange={(e) => setUsuario(e.target.value)}
+              disabled={loading} 
             />
             {errors.usuario && <div className="invalid-feedback">{errors.usuario}</div>}
           </div>
@@ -80,17 +88,25 @@ export function Login() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              disabled={loading} 
             />
             {errors.password && <div className="invalid-feedback">{errors.password}</div>}
           </div>
 
           <div className="d-grid">
             <button
-              type="button"
-              className="btn btn-primary"
-              onClick={handleLogin}
+              type="submit"
+              className="btn btn-primary d-flex justify-content-center align-items-center"
+              disabled={loading} 
             >
-              Entrar
+              {loading ? (
+                <>
+                  <span className="spinner-border spinner-border-sm me-2" role="status" />
+                  Cargando...
+                </>
+              ) : (
+                'Entrar'
+              )}
             </button>
           </div>
         </form>

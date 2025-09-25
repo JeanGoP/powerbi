@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaGear } from "react-icons/fa6";
 import { MdOutlineOutput } from "react-icons/md";
 import { IoMdKey } from "react-icons/io";
@@ -30,7 +30,7 @@ const Navbar = () => {
                     password: data.clave,
                     passwordnew: data.nuevaClave
                 }
-               
+
                 const response = await CambioClave(jsonData);
 
                 if (response.Error) {
@@ -51,11 +51,12 @@ const Navbar = () => {
     };
 
     const { configuracionData = {} } = useContext(LanguageContext);
+
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark fixed-top" data-bs-theme="dark">
                 <div className="container-fluid px-4">
-                    <a className="navbar-brand nombre__menu" >Mis Reportes</a>
+                    <button className="navbar-brand nombre__menu" style={{border:"none", background :"#2b3035"}}> <NavLink to="/home" style={{textDecoration:"none", color:"#dee2e6"}}>Mis Reportes</NavLink> </button>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -74,7 +75,17 @@ const Navbar = () => {
                                 </a>
                                 <ul className="dropdown-menu dropdown-menu-end">
                                     <li><button className="dropdown-item disabled"> <FaUser style={{ marginRight: "10px" }} />{configuracionData?.perfil}</button></li>
-                                    <li><button className="dropdown-item disabled"> <FaGear style={{ marginRight: "10px" }} />Configuración</button></li>
+                                    {configuracionData?.usuario === "administrador" && (
+                                        <li>
+                                            <button className="dropdown-item">
+                                                <NavLink to="/configuracion" style={{textDecoration:"none", color:"#dee2e6"}}>
+                                                <FaGear style={{ marginRight: "10px" }} />
+                                                Configuración
+                                                </NavLink>
+
+                                            </button>
+                                        </li>
+                                    )}
                                     <li><button className="dropdown-item" onClick={() => setShowModal(true)}><IoMdKey style={{ marginRight: "10px" }} />Cambiar Contraseña</button></li>
                                     <li><button className="dropdown-item" onClick={handleCerrarLogin}><MdOutlineOutput style={{ marginRight: "10px" }} />Salir</button></li>
                                 </ul>

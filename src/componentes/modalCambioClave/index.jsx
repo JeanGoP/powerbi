@@ -66,7 +66,7 @@ const ModalCambioClave = ({ show, onClose, onGuardar }) => {
             </div>
           </div>
           <div className="modal-footer">
-            <button className="btn btn-secondary" onClick={onClose}>
+            <button className="btn btn-danger" onClick={onClose}>
               Cancelar
             </button>
             <button

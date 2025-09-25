@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import Footer from '../componentes/footer';
 import { Login } from '../pages/login';
 import ProtectedRoute from '../context/protectedRoute';
+import Configuracion from '../pages/configuracion';
 function AppRoutesWrapper() {
   const location = useLocation();
   const path = location.pathname.toLowerCase().replace(/\/+$/, '');
@@ -20,6 +21,7 @@ function AppRoutesWrapper() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={ <ProtectedRoute><Home /></ProtectedRoute> } />
         <Route path="/reporte" element={<ProtectedRoute><ReportePage /></ProtectedRoute>} />
+        <Route path="/configuracion" element={<ProtectedRoute><Configuracion /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
       
