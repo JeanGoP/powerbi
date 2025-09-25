@@ -75,7 +75,7 @@ const Navbar = () => {
                                 </a>
                                 <ul className="dropdown-menu dropdown-menu-end">
                                     <li><button className="dropdown-item disabled"> <FaUser style={{ marginRight: "10px" }} />{configuracionData?.perfil}</button></li>
-                                    {configuracionData?.usuario === "administrador" && (
+                                    {configuracionData?.perfil === "Super Administrador" && (
                                         <li>
                                             <button className="dropdown-item">
                                                 <NavLink to="/configuracion" style={{textDecoration:"none", color:"#dee2e6"}}>
