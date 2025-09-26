@@ -17,6 +17,7 @@ const Navbar = () => {
         sessionStorage.setItem('SessionToken', undefined);
         sessionStorage.setItem('Usuario', undefined);
         sessionStorage.setItem('nombreusuario', undefined);
+        sessionStorage.setItem('perfil', undefined);
     }
     const handleGuardarClave = async (data) => {
 

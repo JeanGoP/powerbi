@@ -41,6 +41,7 @@ export function Login() {
           sessionStorage.setItem('SessionToken', response.Resultado.SessionToken);
           sessionStorage.setItem('Usuario', response.Resultado.usuario);
           sessionStorage.setItem('nombreusuario', response.Resultado.nombreusuario);
+          sessionStorage.setItem('perfil', response.Resultado.perfil);
         }
       } catch (error) {
         console.log(error);

@@ -13,15 +13,16 @@ function AppRoutesWrapper() {
   const path = location.pathname.toLowerCase().replace(/\/+$/, '');
 
   const ocultarLayout = path === '/login';
+  
   return (
     <div className="d-flex flex-column min-vh-100">
       {!ocultarLayout && <Navbar /> } 
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={ <ProtectedRoute><Home /></ProtectedRoute> } />
-        <Route path="/reporte" element={<ProtectedRoute><ReportePage /></ProtectedRoute>} />
-        <Route path="/configuracion" element={<ProtectedRoute><Configuracion /></ProtectedRoute>} />
+        <Route path="/home" element={ <ProtectedRoute allowedRoles={["Super Administrador","Consultor","PowerBI"]}><Home /></ProtectedRoute> } />
+        <Route path="/reporte" element={<ProtectedRoute allowedRoles={["Super Administrador","Consultor","PowerBI"]}><ReportePage /></ProtectedRoute>} />
+        <Route path="/configuracion" element={<ProtectedRoute allowedRoles={["Super Administrador"]}><Configuracion /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
       

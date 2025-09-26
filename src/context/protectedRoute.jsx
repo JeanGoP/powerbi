@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children,allowedRoles }) => {
   }, []);
   const userRole = sessionStorage.getItem("perfil"); 
 
-  return sessionStorage.getItem("SessionToken") != 'undefined'  ? children : <Navigate to="/" />;
+  return sessionStorage.getItem("SessionToken") != 'undefined' && allowedRoles.includes(userRole) ? children : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;
